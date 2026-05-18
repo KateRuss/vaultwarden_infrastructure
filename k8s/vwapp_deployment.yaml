@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vwapp
+  labels:
+    app: vwapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vwapp
+  template:
+    metadata:
+      labels:
+        app: vwapp
+    spec:
+      containers:
+      - name: vwapp
+        image: vaultwarden/server:latest
+        env:
+        - name: DATABASE_URL
+          value: "mysql://postgres:password@vwdb-service:3306/vaultwarden"
+        volumeMounts:
+        - name: vwapp-data
+          mountPath: /data
+      volumes:
+      - name: vwapp-data
+        persistentVolumeClaim:
+          claimName: vwapp-pvc

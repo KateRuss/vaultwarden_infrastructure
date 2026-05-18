@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vw-db
+  labels:
+    app: vw-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vw-db
+  template:
+    metadata:
+      labels:
+        app: vw-db
+    spec:
+      containers:
+      - name: vw-db
+        image: mariadb
+        volumeMounts:
+        - name: db-data
+          mountPath: /var/lib/mysql
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "password"
+        - name: MYSQL_USER
+          value: "postgres"
+        - name: MYSQL_PASSWORD
+          value: "password"
+        - name: MYSQL_DATABASE
+          value: "vaultwarden"
+      volumes:
+      - name: db-data
+        persistentVolumeClaim:
+          claimName: db-pvc
