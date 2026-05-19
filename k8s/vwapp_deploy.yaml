@@ -18,8 +18,20 @@ spec:
       - name: vwapp
         image: vaultwarden/server:latest
         env:
+        - name: DOMAIN
+          value: "http://localhost:8080"
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: vaultwarden-secrets
+              key: MYSQL_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: vaultwarden-secrets
+              key: MYSQL_PASSWORD
         - name: DATABASE_URL
-          value: "mysql://postgres:password@vwdb-service:3306/vaultwarden"
+          value: "mysql://$(DB_USER):$(DB_PASSWORD)@vwdb-service:3306/vaultwarden"
         volumeMounts:
         - name: vwapp-data
           mountPath: /data
