@@ -1,0 +1,3 @@
+# Add the following line to your .gitignore to avoid committing secrets:
+# Secrets
+/k8s/secret.yaml
