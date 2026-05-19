@@ -19,7 +19,7 @@ spec:
         image: vaultwarden/server:latest
         env:
         - name: DOMAIN
-          value: "http://localhost:8080"
+          value: "https://localhost:80"
         - name: DB_USER
           valueFrom:
             secretKeyRef:
