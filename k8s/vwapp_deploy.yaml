@@ -18,8 +18,6 @@ spec:
       - name: vwapp
         image: vaultwarden/server:latest
         env:
-        - name: DOMAIN
-          value: "https://localhost:80"
         - name: DB_USER
           valueFrom:
             secretKeyRef:

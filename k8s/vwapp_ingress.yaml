@@ -1,0 +1,29 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vaultwarden
+  namespace: default
+  annotations:
+    haproxy.org/forwarded-for: "true"
+    haproxy.org/compression-algo: "gzip"
+    haproxy.org/compression-type: "text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript"
+    haproxy.org/http2-enabled: "true"
+spec:
+  ingressClassName: haproxy
+  tls:
+  - hosts:
+    - vaultwarden.example.tld
+    secretName: vaultwarden-tls
+
+  rules:
+  - host: vaultwarden.example.tld
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vwapp-service
+            port:
+              number: 80
