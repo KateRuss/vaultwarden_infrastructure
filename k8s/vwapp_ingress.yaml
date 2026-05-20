@@ -3,8 +3,13 @@ kind: Ingress
 metadata:
   name: vaultwarden
   namespace: default
+  annotations:
+    haproxy.org/forwarded-for: "true"
+    haproxy.org/compression-algo: "gzip"
+    haproxy.org/compression-type: "text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript"
+    haproxy.org/http2-enabled: "true"
 spec:
-  ingressClassName: traefik
+  ingressClassName: haproxy
   tls:
   - hosts:
     - vaultwarden.example.tld
