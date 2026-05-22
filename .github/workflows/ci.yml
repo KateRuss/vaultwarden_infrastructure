@@ -8,9 +8,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
+      with:
+        files: ../k8s
 
     - name: Set up Kubeconform
       uses: bmuschko/setup-kubeconform@v1
     
     - name: Validate manifests
       run: kubeconform -summary -verbose .
+      
