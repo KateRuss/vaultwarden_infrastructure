@@ -15,4 +15,10 @@ jobs:
     
     - name: Validate manifests
       run: kubeconform -summary -verbose ./k8s
-      
+   kube-score:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: kube-score check
+      uses: piraces/kube-score-ga@v0.1.3
+      with:
+        manifests-folders: './k8s'
