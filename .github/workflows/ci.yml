@@ -22,6 +22,4 @@ jobs:
     - name: Setup Kubescore
       uses: tobbbles/setup-kubescore@v1.0.3
     - name: kube-score check
-      uses: piraces/kube-score-ga@v0.1.3
-      with:
-        manifests-folders: './k8s'
+      run:  kube-score score ./k8s/*.yaml
