@@ -19,6 +19,7 @@ jobs:
   kube-score:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - name: Setup Kubescore
       uses: tobbbles/setup-kubescore@v1.0.3
     - name: kube-score check
