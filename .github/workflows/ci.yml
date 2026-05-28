@@ -23,4 +23,4 @@ jobs:
     - name: Setup Kubescore
       uses: tobbbles/setup-kubescore@v1.0.3
     - name: kube-score check
-      run: kube-score score ./k8s
+      run: kube-score score ./k8s/*.yaml
