@@ -18,7 +18,7 @@ The base application is [Vaultwarden](https://github.com/dani-garcia/vaultwarden
 ## Current State / Roadmap
 ✅ Stage 1: Local k8s deployment (k3s)
 
-⬜ Stage 2: CI/CD pipeline (GitHub Actions)
+⌛ Stage 2: CI/CD pipeline (GitHub Actions)
 
 ⬜ Stage 3: Monitoring (Prometheus + Grafana)
 
