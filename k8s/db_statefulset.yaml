@@ -41,11 +41,11 @@ spec:
               key: MYSQL_PASSWORD
         - name: MYSQL_DATABASE
           value: "vaultwarden"
-      volumeClaimTemplates:
-      - metadata:
-          name: db-data
-        spec:
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 2Gi
+    volumeClaimTemplates:
+    - metadata:
+        name: db-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 2Gi
