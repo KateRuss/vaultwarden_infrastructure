@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: vw-db
-        image: mariadb
+        image: mariadb:latest
         volumeMounts:
         - name: db-data
           mountPath: /var/lib/mysql
