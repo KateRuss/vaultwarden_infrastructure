@@ -5,6 +5,7 @@ metadata:
   labels:
     app: vw-db
 spec:
+  serviceName: vw-db-headless
   replicas: 1
   selector:
     matchLabels:
