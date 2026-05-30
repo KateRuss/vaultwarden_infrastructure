@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: vw-db
   labels:
@@ -40,7 +40,11 @@ spec:
               key: MYSQL_PASSWORD
         - name: MYSQL_DATABASE
           value: "vaultwarden"
-      volumes:
-      - name: db-data
-        persistentVolumeClaim:
-          claimName: db-pvc
+      volumeClaimTemplates:
+      - metadata:
+          name: db-data
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 2Gi
