@@ -19,6 +19,7 @@ The base application is [Vaultwarden](https://github.com/dani-garcia/vaultwarden
 ✅ Stage 1: Local k8s deployment (k3s)
 
 ⌛ Stage 2: CI/CD pipeline (GitHub Actions)
+    ⬜ Fix errors from kube-conform
 
 ⬜ Stage 3: Monitoring (Prometheus + Grafana)
 
