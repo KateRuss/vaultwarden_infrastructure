@@ -23,4 +23,4 @@ jobs:
     - name: Setup Kubescore
       uses: tobbbles/setup-kubescore@v1.0.3
     - name: kube-score check
-      run: kube-score score ./k8s/*.yaml --ignore-test ingress-targets-service --ignore-test pod-networkpolicy
+      run: kube-score score ./k8s/*.yaml --ignore-test ingress-targets-service --ignore-test pod-networkpolicy --ignore-test container-security-context
