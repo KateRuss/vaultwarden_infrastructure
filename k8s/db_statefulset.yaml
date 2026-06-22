@@ -23,6 +23,13 @@ spec:
       - name: vw-db
         image: mariadb:13.0.1-rc
         imagePullPolicy: Always
+        resources:
+        requests:
+          memory: "256Mi"
+          cpu: "100m"
+        limits:
+          memory: "512Mi"
+          cpu: "500m"
       readinessProbe:
         httpGet:
           path: /alive
@@ -34,13 +41,6 @@ spec:
           mountPath: /var/lib/mysql
         ports:
         - containerPort: 3306
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "100m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
