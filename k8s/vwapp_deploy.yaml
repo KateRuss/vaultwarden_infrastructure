@@ -17,6 +17,13 @@ spec:
       containers:
       - name: vwapp
         image: vaultwarden/server:testing-alpine
+        imagePullPolicy: Always
+        readinessProbe:
+          httpGet:
+            path: /alive
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
         resources:
           requests:
             memory: "64Mi"

@@ -22,7 +22,13 @@ spec:
       containers:
       - name: vw-db
         image: mariadb:13.0.1-rc
-
+        imagePullPolicy: Always
+      readinessProbe:
+        httpGet:
+          path: /alive
+          port: 3306
+        initialDelaySeconds: 10
+        periodSeconds: 5
         volumeMounts:
         - name: db-data
           mountPath: /var/lib/mysql
