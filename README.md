@@ -1,4 +1,6 @@
 # vaultwarden_infrastructure
+![CI](https://github.com/KateRuss/vaultwarden_infrastructure/actions/workflows/ci.yml/badge.svg)
+
 ## Introduction
 
 This project is a portfolio application aimed at understanding how a full infrastructure is built from scratch around an existing application.
