@@ -5,10 +5,6 @@ metadata:
   labels:
     app: vw-db
 spec:
-  securityContext:
-    runAsUser: 1000
-    allowPrivilegeEscalation: false
-    readOnlyRootFilesystem: false
   serviceName: vw-db-headless
   replicas: 1
   selector:
@@ -24,18 +20,24 @@ spec:
         image: mariadb:13.0.1-rc
         imagePullPolicy: Always
         resources:
-        requests:
-          memory: "256Mi"
-          cpu: "100m"
-        limits:
-          memory: "512Mi"
-          cpu: "500m"
-      readinessProbe:
-        httpGet:
-          path: /alive
-          port: 3306
-        initialDelaySeconds: 10
-        periodSeconds: 5
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        securityContext:
+          runAsUser: 1000
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: false
+        readinessProbe:
+          exec:
+            command:
+            - bash
+            - -c
+            - "mariadb -u$MYSQL_USER -p$MYSQL_PASSWORD -e 'SELECT 1'"
+          initialDelaySeconds: 10
+          periodSeconds: 5
         volumeMounts:
         - name: db-data
           mountPath: /var/lib/mysql
