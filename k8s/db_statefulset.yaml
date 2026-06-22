@@ -17,12 +17,20 @@ spec:
     spec:
       containers:
       - name: vw-db
-        image: mariadb:latest
+        image: mariadb:13.0.1-rc
+
         volumeMounts:
         - name: db-data
           mountPath: /var/lib/mysql
         ports:
         - containerPort: 3306
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
