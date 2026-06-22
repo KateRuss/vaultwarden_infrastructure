@@ -44,7 +44,7 @@ spec:
             command:
             - bash
             - -c
-            - "mariadb -u$MYSQL_USER -p$MYSQL_PASSWORD -e 'SELECT 1'"
+            - "mysqladmin ping -u$MYSQL_USER -p$MYSQL_PASSWORD"
           initialDelaySeconds: 180
           periodSeconds: 60
           failureThreshold: 10

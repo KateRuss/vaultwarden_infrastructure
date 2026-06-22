@@ -27,7 +27,7 @@ spec:
           failureThreshold: 3
         livenessProbe:
           httpGet:
-            path: /alive
+            path: /
             port: 80
           initialDelaySeconds: 60
           periodSeconds: 30
