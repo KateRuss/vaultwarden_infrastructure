@@ -5,6 +5,10 @@ metadata:
   labels:
     app: vw-db
 spec:
+  securityContext:
+    runAsUser: 1000
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
   serviceName: vw-db-headless
   replicas: 1
   selector:

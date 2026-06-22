@@ -24,6 +24,10 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "200m"
+        securityContext:
+          runAsUser: 1000
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: false 
         env:
         - name: DB_USER
           valueFrom:
