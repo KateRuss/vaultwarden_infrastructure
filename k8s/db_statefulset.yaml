@@ -45,9 +45,9 @@ spec:
             - bash
             - -c
             - "mariadb -u$MYSQL_USER -p$MYSQL_PASSWORD -e 'SELECT 1'"
-          initialDelaySeconds: 60
-          periodSeconds: 30
-          failureThreshold: 5
+          initialDelaySeconds: 180
+          periodSeconds: 60
+          failureThreshold: 10
         volumeMounts:
         - name: db-data
           mountPath: /var/lib/mysql
